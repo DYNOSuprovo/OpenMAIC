@@ -70,15 +70,12 @@ export async function registerNodeInstrumentation(): Promise<void> {
 
   let runner: import('@/lib/server/agent-runtime/runner').AgentRunnerHandle | undefined;
   let extractionRunner:
-    | import('@/lib/server/material-extraction/runner').MaterialExtractionRunnerHandle
-    | undefined;
+    import('@/lib/server/material-extraction/runner').MaterialExtractionRunnerHandle | undefined;
   let stopAgentEventNotifyBus: (() => Promise<void>) | null = null;
   let generationRunner:
-    | import('@/lib/server/generation/run/runner').GenerationRunnerHandle
-    | undefined;
+    import('@/lib/server/generation/run/runner').GenerationRunnerHandle | undefined;
   let materialExtractor:
-    | import('@/lib/server/materials/extractor-wake').OwnerMaterialExtractorHandle
-    | undefined;
+    import('@/lib/server/materials/extractor-wake').OwnerMaterialExtractorHandle | undefined;
   try {
     // Course generation runs on the server in every deployment (classic
     // generation is the default product), so its worker does not depend on
