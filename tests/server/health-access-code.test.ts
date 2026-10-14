@@ -55,7 +55,7 @@ describe('health access-code configuration', () => {
       expect(JSON.stringify(body)).not.toContain('health-route-test-secret');
 
       // The new diagnostic must not change the local-first default or gate.
-      const api = await middleware(new NextRequest('http://localhost/api/foo'));
+      const api = await proxy(new NextRequest('http://localhost/api/foo'));
       expect(api.status).toBe(code ? 401 : 200);
     },
   );

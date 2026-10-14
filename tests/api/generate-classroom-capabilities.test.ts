@@ -5,7 +5,7 @@ import { GET as getCapabilities } from '@/app/api/generate-classroom/capabilitie
 import { GET as getHealth } from '@/app/api/health/route';
 import { agentRuntimeConfig } from '@/lib/server/agent-runtime/config';
 import { WORKBENCH_MATERIAL_MIME_TYPES } from '@/lib/workbench/material-upload-policy';
-import { middleware } from '@/middleware';
+import { middleware } from '@/proxy';
 
 const config = vi.hoisted(() => ({
   pdf: {} as Record<string, object>,
