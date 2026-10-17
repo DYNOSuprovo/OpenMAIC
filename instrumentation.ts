@@ -1,17 +1,17 @@
 /**
  * Process-scoped startup work.
  *
- * Next calls egister\ once per server instance, before it serves a request.
+ * Next calls `register` once per server instance, before it serves a request.
  * That makes it the only place in this app where a background schedule can
- * live: a route module has no such guarantee — it can be instantiated more than
- * once and gets no shutdown hook — so anything periodic started from one is
+ * live: a route module has no such guarantee â€” it can be instantiated more than
+ * once and gets no shutdown hook â€” so anything periodic started from one is
  * really started per instantiation.
  *
- * egister\ must return before the server is ready, so nothing here may block
+ * `register` must return before the server is ready, so nothing here may block
  * on I/O. Starting a timer does not.
  */
 export async function register(): Promise<void> {
-  // Also invoked for the Edge runtime, which has neither \pg\ nor timers we
+  // Also invoked for the Edge runtime, which has neither `pg` nor timers we
   // want; the persistence stack is Node-only.
   if (process.env.NEXT_RUNTIME !== 'nodejs') return;
 
